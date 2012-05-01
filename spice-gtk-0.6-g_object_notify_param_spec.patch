@@ -1,0 +1,21 @@
+commit e99a572494c6c785703fa007eab80697e765edab
+Author: Christophe Fergeau <cfergeau@redhat.com>
+Date:   Mon May 23 14:15:53 2011 +0200
+
+    use g_object_notify instead of g_object_notify_by_spec
+    
+    The latter was added in glib 2.26, and we only require glib 2.22
+
+diff --git a/gtk/display/gnome-rr.c b/gtk/display/gnome-rr.c
+index beaf96e..1f8ef37 100644
+--- a/gtk/display/gnome-rr.c
++++ b/gtk/display/gnome-rr.c
+@@ -340,7 +340,7 @@ gnome_rr_screen_set_property (GObject *gobject, guint property_id, const GValue
+     {
+     case SCREEN_PROP_GDK_SCREEN:
+         priv->gdk_screen = g_value_get_object (value);
+-        g_object_notify_by_pspec (gobject, screen_properties[SCREEN_PROP_GDK_SCREEN]);
++        g_object_notify (gobject, "gdk-screen");
+         return;
+     default:
+         G_OBJECT_WARN_INVALID_PROPERTY_ID (gobject, property_id, property);

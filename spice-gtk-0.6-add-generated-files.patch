@@ -1,0 +1,892 @@
+From c61fa61210eac67b362b3c0ccc52c9763638a7c5 Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Wed, 13 Jul 2011 18:08:37 +0200
+Subject: [PATCH] add generated files
+
+perl-Text-CSV is needed to generate those files, and it's not
+available in RHEL. Starting from next spice-gtk release, these
+files will be part of the upstream tarball.
+---
+ gtk/vncdisplaykeymap_osx2xtkbd.c         |  116 +++++++++++++++
+ gtk/vncdisplaykeymap_win322xtkbd.c       |  137 +++++++++++++++++
+ gtk/vncdisplaykeymap_xorgevdev2xtkbd.c   |  239 ++++++++++++++++++++++++++++++
+ gtk/vncdisplaykeymap_xorgkbd2xtkbd.c     |  111 ++++++++++++++
+ gtk/vncdisplaykeymap_xorgxquartz2xtkbd.c |  116 +++++++++++++++
+ gtk/vncdisplaykeymap_xorgxwin2xtkbd.c    |  111 ++++++++++++++
+ 6 files changed, 830 insertions(+), 0 deletions(-)
+ create mode 100644 gtk/vncdisplaykeymap_osx2xtkbd.c
+ create mode 100644 gtk/vncdisplaykeymap_win322xtkbd.c
+ create mode 100644 gtk/vncdisplaykeymap_xorgevdev2xtkbd.c
+ create mode 100644 gtk/vncdisplaykeymap_xorgkbd2xtkbd.c
+ create mode 100644 gtk/vncdisplaykeymap_xorgxquartz2xtkbd.c
+ create mode 100644 gtk/vncdisplaykeymap_xorgxwin2xtkbd.c
+
+diff --git a/gtk/vncdisplaykeymap_osx2xtkbd.c b/gtk/vncdisplaykeymap_osx2xtkbd.c
+new file mode 100644
+index 0000000..7a20a4d
+--- /dev/null
++++ b/gtk/vncdisplaykeymap_osx2xtkbd.c
+@@ -0,0 +1,116 @@
++static const guint16 keymap_osx2xtkbd[] = {
++  [0x1] = 0x1f,        /* 1 (ANSI_S) => 31 via 31 (KEY_S) */
++  [0x2] = 0x20,        /* 2 (ANSI_D) => 32 via 32 (KEY_D) */
++  [0x3] = 0x21,        /* 3 (ANSI_F) => 33 via 33 (KEY_F) */
++  [0x4] = 0x23,        /* 4 (ANSI_H) => 35 via 35 (KEY_H) */
++  [0x5] = 0x22,        /* 5 (ANSI_G) => 34 via 34 (KEY_G) */
++  [0x6] = 0x2c,        /* 6 (ANSI_Z) => 44 via 44 (KEY_Z) */
++  [0x7] = 0x2d,        /* 7 (ANSI_X) => 45 via 45 (KEY_X) */
++  [0x8] = 0x2e,        /* 8 (ANSI_C) => 46 via 46 (KEY_C) */
++  [0x9] = 0x2f,        /* 9 (ANSI_V) => 47 via 47 (KEY_V) */
++  [0xa] = 0x70,        /* 10 (ISO_Section) => 112 via 170 (KEY_ISO) */
++  [0xb] = 0x30,        /* 11 (ANSI_B) => 48 via 48 (KEY_B) */
++  [0xc] = 0x10,        /* 12 (ANSI_Q) => 16 via 16 (KEY_Q) */
++  [0xd] = 0x11,        /* 13 (ANSI_W) => 17 via 17 (KEY_W) */
++  [0xe] = 0x12,        /* 14 (ANSI_E) => 18 via 18 (KEY_E) */
++  [0xf] = 0x13,        /* 15 (ANSI_R) => 19 via 19 (KEY_R) */
++  [0x10] = 0x15,       /* 16 (ANSI_Y) => 21 via 21 (KEY_Y) */
++  [0x11] = 0x14,       /* 17 (ANSI_T) => 20 via 20 (KEY_T) */
++  [0x12] = 0x2,        /* 18 (ANSI_1) => 2 via 2 (KEY_1) */
++  [0x13] = 0x3,        /* 19 (ANSI_2) => 3 via 3 (KEY_2) */
++  [0x14] = 0x4,        /* 20 (ANSI_3) => 4 via 4 (KEY_3) */
++  [0x15] = 0x5,        /* 21 (ANSI_4) => 5 via 5 (KEY_4) */
++  [0x16] = 0x7,        /* 22 (ANSI_6) => 7 via 7 (KEY_6) */
++  [0x17] = 0x6,        /* 23 (ANSI_5) => 6 via 6 (KEY_5) */
++  [0x18] = 0xd,        /* 24 (ANSI_Equal) => 13 via 13 (KEY_EQUAL) */
++  [0x19] = 0xa,        /* 25 (ANSI_9) => 10 via 10 (KEY_9) */
++  [0x1a] = 0x8,        /* 26 (ANSI_7) => 8 via 8 (KEY_7) */
++  [0x1b] = 0xc,        /* 27 (ANSI_Minus) => 12 via 12 (KEY_MINUS) */
++  [0x1c] = 0x9,        /* 28 (ANSI_8) => 9 via 9 (KEY_8) */
++  [0x1d] = 0xb,        /* 29 (ANSI_0) => 11 via 11 (KEY_0) */
++  [0x1e] = 0x1b,       /* 30 (ANSI_RightBracket) => 27 via 27 (KEY_RIGHTBRACE) */
++  [0x1f] = 0x18,       /* 31 (ANSI_O) => 24 via 24 (KEY_O) */
++  [0x20] = 0x16,       /* 32 (ANSI_U) => 22 via 22 (KEY_U) */
++  [0x21] = 0x1a,       /* 33 (ANSI_LeftBracket) => 26 via 26 (KEY_LEFTBRACE) */
++  [0x22] = 0x17,       /* 34 (ANSI_I) => 23 via 23 (KEY_I) */
++  [0x23] = 0x19,       /* 35 (ANSI_P) => 25 via 25 (KEY_P) */
++  [0x24] = 0x1c,       /* 36 (Return) => 28 via 28 (KEY_ENTER) */
++  [0x25] = 0x26,       /* 37 (ANSI_L) => 38 via 38 (KEY_L) */
++  [0x26] = 0x24,       /* 38 (ANSI_J) => 36 via 36 (KEY_J) */
++  [0x27] = 0x28,       /* 39 (ANSI_Quote) => 40 via 40 (KEY_APOSTROPHE) */
++  [0x28] = 0x25,       /* 40 (ANSI_K) => 37 via 37 (KEY_K) */
++  [0x29] = 0x27,       /* 41 (ANSI_Semicolon) => 39 via 39 (KEY_SEMICOLON) */
++  [0x2a] = 0x2b,       /* 42 (ANSI_Backslash) => 43 via 43 (KEY_BACKSLASH) */
++  [0x2b] = 0x33,       /* 43 (ANSI_Comma) => 51 via 51 (KEY_COMMA) */
++  [0x2c] = 0x35,       /* 44 (ANSI_Slash) => 53 via 53 (KEY_SLASH) */
++  [0x2d] = 0x31,       /* 45 (ANSI_N) => 49 via 49 (KEY_N) */
++  [0x2e] = 0x32,       /* 46 (ANSI_M) => 50 via 50 (KEY_M) */
++  [0x2f] = 0x34,       /* 47 (ANSI_Period) => 52 via 52 (KEY_DOT) */
++  [0x30] = 0xf,        /* 48 (Tab) => 15 via 15 (KEY_TAB) */
++  [0x31] = 0x39,       /* 49 (Space) => 57 via 57 (KEY_SPACE) */
++  [0x32] = 0x29,       /* 50 (ANSI_Grave) => 41 via 41 (KEY_GRAVE) */
++  [0x33] = 0xe,        /* 51 (Delete) => 14 via 14 (KEY_BACKSPACE) */
++  [0x35] = 0x1,        /* 53 (Escape) => 1 via 1 (KEY_ESC) */
++  [0x37] = 0x15b,      /* 55 (Command) => 347 via 125 (KEY_LEFTMETA) */
++  [0x38] = 0x2a,       /* 56 (Shift) => 42 via 42 (KEY_LEFTSHIFT) */
++  [0x39] = 0x3a,       /* 57 (CapsLock) => 58 via 58 (KEY_CAPSLOCK) */
++  [0x3a] = 0x38,       /* 58 (Option) => 56 via 56 (KEY_LEFTALT) */
++  [0x3b] = 0x1d,       /* 59 (Control) => 29 via 29 (KEY_LEFTCTRL) */
++  [0x3c] = 0x36,       /* 60 (RightShift) => 54 via 54 (KEY_RIGHTSHIFT) */
++  [0x3d] = 0x138,      /* 61 (RightOption) => 312 via 100 (KEY_RIGHTALT) */
++  [0x3e] = 0x11d,      /* 62 (RightControl) => 285 via 97 (KEY_RIGHTCTRL) */
++  [0x3f] = 0x15d,      /* 63 (Function) => 349 via 127 (KEY_COMPOSE) */
++  [0x40] = 0x103,      /* 64 (F17) => 259 via 187 (KEY_F17) */
++  [0x41] = 0x53,       /* 65 (ANSI_KeypadDecimal) => 83 via 83 (KEY_KPDOT) */
++  [0x43] = 0x37,       /* 67 (ANSI_KeypadMultiply) => 55 via 55 (KEY_KPASTERISK) */
++  [0x45] = 0x4e,       /* 69 (ANSI_KeypadPlus) => 78 via 78 (KEY_KPPLUS) */
++  [0x47] = 0x7e,       /* 71 (ANSI_KeypadClear????) => 126 via 121 (KEY_KPCOMMA) */
++  [0x48] = 0x130,      /* 72 (VolumeUp) => 304 via 115 (KEY_VOLUMEUP) */
++  [0x49] = 0x12e,      /* 73 (VolumeDown) => 302 via 114 (KEY_VOLUMEDOWN) */
++  [0x4a] = 0x120,      /* 74 (Mute) => 288 via 113 (KEY_MUTE) */
++  [0x4b] = 0x135,      /* 75 (ANSI_KeypadDivide) => 309 via 98 (KEY_KPSLASH) */
++  [0x4c] = 0x11c,      /* 76 (ANSI_KeypadEnter) => 284 via 96 (KEY_KPENTER) */
++  [0x4e] = 0x4a,       /* 78 (ANSI_KeypadMinus) => 74 via 74 (KEY_KPMINUS) */
++  [0x4f] = 0x177,      /* 79 (F18) => 375 via 188 (KEY_F18) */
++  [0x50] = 0x104,      /* 80 (F19) => 260 via 189 (KEY_F19) */
++  [0x51] = 0x59,       /* 81 (ANSI_KeypadEquals) => 89 via 117 (KEY_KPEQUAL) */
++  [0x52] = 0x52,       /* 82 (ANSI_Keypad0) => 82 via 82 (KEY_KP0) */
++  [0x53] = 0x4f,       /* 83 (ANSI_Keypad1) => 79 via 79 (KEY_KP1) */
++  [0x54] = 0x50,       /* 84 (ANSI_Keypad2) => 80 via 80 (KEY_KP2) */
++  [0x55] = 0x51,       /* 85 (ANSI_Keypad3) => 81 via 81 (KEY_KP3) */
++  [0x56] = 0x4b,       /* 86 (ANSI_Keypad4) => 75 via 75 (KEY_KP4) */
++  [0x57] = 0x4c,       /* 87 (ANSI_Keypad5) => 76 via 76 (KEY_KP5) */
++  [0x58] = 0x4d,       /* 88 (ANSI_Keypad6) => 77 via 77 (KEY_KP6) */
++  [0x59] = 0x47,       /* 89 (ANSI_Keypad7) => 71 via 71 (KEY_KP7) */
++  [0x5a] = 0x5a,       /* 90 (F20) => 90 via 190 (KEY_F20) */
++  [0x5b] = 0x48,       /* 91 (ANSI_Keypad8) => 72 via 72 (KEY_KP8) */
++  [0x5c] = 0x49,       /* 92 (ANSI_Keypad9) => 73 via 73 (KEY_KP9) */
++  [0x5d] = 0x7d,       /* 93 (JIS_Yen) => 125 via 124 (KEY_YEN) */
++  [0x5f] = 0x5c,       /* 95 (JIS_KeypadComma) => 92 via 95 (KEY_KPJPCOMMA) */
++  [0x60] = 0x3f,       /* 96 (F5) => 63 via 63 (KEY_F5) */
++  [0x61] = 0x40,       /* 97 (F6) => 64 via 64 (KEY_F6) */
++  [0x62] = 0x41,       /* 98 (F7) => 65 via 65 (KEY_F7) */
++  [0x63] = 0x3d,       /* 99 (F3) => 61 via 61 (KEY_F3) */
++  [0x64] = 0x42,       /* 100 (F8) => 66 via 66 (KEY_F8) */
++  [0x65] = 0x43,       /* 101 (F9) => 67 via 67 (KEY_F9) */
++  [0x67] = 0x57,       /* 103 (F11) => 87 via 87 (KEY_F11) */
++  [0x68] = 0x78,       /* 104 (JIS_Kana????) => 120 via 90 (KEY_KATAKANA) */
++  [0x69] = 0x5d,       /* 105 (F13) => 93 via 183 (KEY_F13) */
++  [0x6a] = 0x55,       /* 106 (F16) => 85 via 186 (KEY_F16) */
++  [0x6b] = 0x5e,       /* 107 (F14) => 94 via 184 (KEY_F14) */
++  [0x6d] = 0x44,       /* 109 (F10) => 68 via 68 (KEY_F10) */
++  [0x6f] = 0x58,       /* 111 (F12) => 88 via 88 (KEY_F12) */
++  [0x71] = 0x5f,       /* 113 (F15) => 95 via 185 (KEY_F15) */
++  [0x73] = 0x147,      /* 115 (Home) => 327 via 102 (KEY_HOME) */
++  [0x74] = 0x149,      /* 116 (PageUp) => 329 via 104 (KEY_PAGEUP) */
++  [0x75] = 0x153,      /* 117 (ForwardDelete) => 339 via 111 (KEY_DELETE) */
++  [0x76] = 0x3e,       /* 118 (F4) => 62 via 62 (KEY_F4) */
++  [0x77] = 0x14f,      /* 119 (End) => 335 via 107 (KEY_END) */
++  [0x78] = 0x3c,       /* 120 (F2) => 60 via 60 (KEY_F2) */
++  [0x79] = 0x151,      /* 121 (PageDown) => 337 via 109 (KEY_PAGEDOWN) */
++  [0x7a] = 0x3b,       /* 122 (F1) => 59 via 59 (KEY_F1) */
++  [0x7b] = 0x14b,      /* 123 (LeftArrow) => 331 via 105 (KEY_LEFT) */
++  [0x7c] = 0x14d,      /* 124 (RightArrow) => 333 via 106 (KEY_RIGHT) */
++  [0x7d] = 0x150,      /* 125 (DownArrow) => 336 via 108 (KEY_DOWN) */
++  [0x7e] = 0x148,      /* 126 (UpArrow) => 328 via 103 (KEY_UP) */
++};
+diff --git a/gtk/vncdisplaykeymap_win322xtkbd.c b/gtk/vncdisplaykeymap_win322xtkbd.c
+new file mode 100644
+index 0000000..0a8a07a
+--- /dev/null
++++ b/gtk/vncdisplaykeymap_win322xtkbd.c
+@@ -0,0 +1,137 @@
++static const guint16 keymap_win322xtkbd[] = {
++  [0x8] = 0xe,         /* 8 (VK_BACK) => 14 via 14 (KEY_BACKSPACE) */
++  [0x9] = 0xf,         /* 9 (VK_TAB) => 15 via 15 (KEY_TAB) */
++  [0xd] = 0x1c,        /* 13 (VK_RETURN) => 28 via 28 (KEY_ENTER) */
++  [0x13] = 0x146,      /* 19 (VK_PAUSE) => 326 via 119 (KEY_PAUSE) */
++  [0x14] = 0x3a,       /* 20 (VK_CAPITAL) => 58 via 58 (KEY_CAPSLOCK) */
++  [0x19] = 0x10d,      /* 25 (VK_HANJA) => 269 via 123 (KEY_HANJA) */
++  [0x1b] = 0x1,        /* 27 (VK_ESCAPE) => 1 via 1 (KEY_ESC) */
++  [0x20] = 0x39,       /* 32 (VK_SPACE) => 57 via 57 (KEY_SPACE) */
++  [0x21] = 0x149,      /* 33 (VK_PRIOR) => 329 via 104 (KEY_PAGEUP) */
++  [0x22] = 0x151,      /* 34 (VK_NEXT) => 337 via 109 (KEY_PAGEDOWN) */
++  [0x23] = 0x14f,      /* 35 (VK_END) => 335 via 107 (KEY_END) */
++  [0x24] = 0x147,      /* 36 (VK_HOME) => 327 via 102 (KEY_HOME) */
++  [0x25] = 0x14b,      /* 37 (VK_LEFT) => 331 via 105 (KEY_LEFT) */
++  [0x26] = 0x148,      /* 38 (VK_UP) => 328 via 103 (KEY_UP) */
++  [0x27] = 0x14d,      /* 39 (VK_RIGHT) => 333 via 106 (KEY_RIGHT) */
++  [0x28] = 0x150,      /* 40 (VK_DOWN) => 336 via 108 (KEY_DOWN) */
++  [0x2a] = 0x139,      /* 42 (VK_PRINT) => 313 via 210 (KEY_PRINT) */
++  [0x2c] = 0x54,       /* 44 (VK_SNAPSHOT ???) => 84 via 99 (KEY_SYSRQ) */
++  [0x2d] = 0x152,      /* 45 (VK_INSERT) => 338 via 110 (KEY_INSERT) */
++  [0x2e] = 0x153,      /* 46 (VK_DELETE) => 339 via 111 (KEY_DELETE) */
++  [0x2f] = 0x175,      /* 47 (VK_HELP) => 373 via 138 (KEY_HELP) */
++  [0x30] = 0xb,        /* 48 (VK_0) => 11 via 11 (KEY_0) */
++  [0x31] = 0x2,        /* 49 (VK_1) => 2 via 2 (KEY_1) */
++  [0x32] = 0x3,        /* 50 (VK_2) => 3 via 3 (KEY_2) */
++  [0x33] = 0x4,        /* 51 (VK_3) => 4 via 4 (KEY_3) */
++  [0x34] = 0x5,        /* 52 (VK_4) => 5 via 5 (KEY_4) */
++  [0x35] = 0x6,        /* 53 (VK_5) => 6 via 6 (KEY_5) */
++  [0x36] = 0x7,        /* 54 (VK_6) => 7 via 7 (KEY_6) */
++  [0x37] = 0x8,        /* 55 (VK_7) => 8 via 8 (KEY_7) */
++  [0x38] = 0x9,        /* 56 (VK_8) => 9 via 9 (KEY_8) */
++  [0x39] = 0xa,        /* 57 (VK_9) => 10 via 10 (KEY_9) */
++  [0x41] = 0x1e,       /* 65 (VK_A) => 30 via 30 (KEY_A) */
++  [0x42] = 0x30,       /* 66 (VK_B) => 48 via 48 (KEY_B) */
++  [0x43] = 0x2e,       /* 67 (VK_C) => 46 via 46 (KEY_C) */
++  [0x44] = 0x20,       /* 68 (VK_D) => 32 via 32 (KEY_D) */
++  [0x45] = 0x12,       /* 69 (VK_E) => 18 via 18 (KEY_E) */
++  [0x46] = 0x21,       /* 70 (VK_F) => 33 via 33 (KEY_F) */
++  [0x47] = 0x22,       /* 71 (VK_G) => 34 via 34 (KEY_G) */
++  [0x48] = 0x23,       /* 72 (VK_H) => 35 via 35 (KEY_H) */
++  [0x49] = 0x17,       /* 73 (VK_I) => 23 via 23 (KEY_I) */
++  [0x4a] = 0x24,       /* 74 (VK_J) => 36 via 36 (KEY_J) */
++  [0x4b] = 0x25,       /* 75 (VK_K) => 37 via 37 (KEY_K) */
++  [0x4c] = 0x26,       /* 76 (VK_L) => 38 via 38 (KEY_L) */
++  [0x4d] = 0x32,       /* 77 (VK_M) => 50 via 50 (KEY_M) */
++  [0x4e] = 0x31,       /* 78 (VK_N) => 49 via 49 (KEY_N) */
++  [0x4f] = 0x18,       /* 79 (VK_O) => 24 via 24 (KEY_O) */
++  [0x50] = 0x19,       /* 80 (VK_P) => 25 via 25 (KEY_P) */
++  [0x51] = 0x10,       /* 81 (VK_Q) => 16 via 16 (KEY_Q) */
++  [0x52] = 0x13,       /* 82 (VK_R) => 19 via 19 (KEY_R) */
++  [0x53] = 0x1f,       /* 83 (VK_S) => 31 via 31 (KEY_S) */
++  [0x54] = 0x14,       /* 84 (VK_T) => 20 via 20 (KEY_T) */
++  [0x55] = 0x16,       /* 85 (VK_U) => 22 via 22 (KEY_U) */
++  [0x56] = 0x2f,       /* 86 (VK_V) => 47 via 47 (KEY_V) */
++  [0x57] = 0x11,       /* 87 (VK_W) => 17 via 17 (KEY_W) */
++  [0x58] = 0x2d,       /* 88 (VK_X) => 45 via 45 (KEY_X) */
++  [0x59] = 0x15,       /* 89 (VK_Y) => 21 via 21 (KEY_Y) */
++  [0x5a] = 0x2c,       /* 90 (VK_Z) => 44 via 44 (KEY_Z) */
++  [0x5b] = 0x15b,      /* 91 (VK_LWIN) => 347 via 125 (KEY_LEFTMETA) */
++  [0x5c] = 0x15c,      /* 92 (VK_RWIN) => 348 via 126 (KEY_RIGHTMETA) */
++  [0x5d] = 0x15d,      /* 93 (VK_APPS) => 349 via 127 (KEY_COMPOSE) */
++  [0x5f] = 0x15f,      /* 95 (VK_SLEEP) => 351 via 142 (KEY_SLEEP) */
++  [0x60] = 0x52,       /* 96 (VK_NUMPAD0) => 82 via 82 (KEY_KP0) */
++  [0x61] = 0x4f,       /* 97 (VK_NUMPAD1) => 79 via 79 (KEY_KP1) */
++  [0x62] = 0x50,       /* 98 (VK_NUMPAD2) => 80 via 80 (KEY_KP2) */
++  [0x63] = 0x51,       /* 99 (VK_NUMPAD3) => 81 via 81 (KEY_KP3) */
++  [0x64] = 0x4b,       /* 100 (VK_NUMPAD4) => 75 via 75 (KEY_KP4) */
++  [0x65] = 0x4c,       /* 101 (VK_NUMPAD5) => 76 via 76 (KEY_KP5) */
++  [0x66] = 0x4d,       /* 102 (VK_NUMPAD6) => 77 via 77 (KEY_KP6) */
++  [0x67] = 0x47,       /* 103 (VK_NUMPAD7) => 71 via 71 (KEY_KP7) */
++  [0x68] = 0x48,       /* 104 (VK_NUMPAD8) => 72 via 72 (KEY_KP8) */
++  [0x69] = 0x49,       /* 105 (VK_NUMPAD9) => 73 via 73 (KEY_KP9) */
++  [0x6a] = 0x37,       /* 106 (VK_MULTIPLY) => 55 via 55 (KEY_KPASTERISK) */
++  [0x6b] = 0x4e,       /* 107 (VK_ADD) => 78 via 78 (KEY_KPPLUS) */
++  [0x6c] = 0x7e,       /* 108 (VK_SEPARATOR??) => 126 via 121 (KEY_KPCOMMA) */
++  [0x6d] = 0x4a,       /* 109 (VK_SUBTRACT) => 74 via 74 (KEY_KPMINUS) */
++  [0x6e] = 0x53,       /* 110 (VK_DECIMAL) => 83 via 83 (KEY_KPDOT) */
++  [0x6f] = 0x135,      /* 111 (VK_DIVIDE) => 309 via 98 (KEY_KPSLASH) */
++  [0x70] = 0x3b,       /* 112 (VK_F1) => 59 via 59 (KEY_F1) */
++  [0x71] = 0x3c,       /* 113 (VK_F2) => 60 via 60 (KEY_F2) */
++  [0x72] = 0x3d,       /* 114 (VK_F3) => 61 via 61 (KEY_F3) */
++  [0x73] = 0x3e,       /* 115 (VK_F4) => 62 via 62 (KEY_F4) */
++  [0x74] = 0x3f,       /* 116 (VK_F5) => 63 via 63 (KEY_F5) */
++  [0x75] = 0x40,       /* 117 (VK_F6) => 64 via 64 (KEY_F6) */
++  [0x76] = 0x41,       /* 118 (VK_F7) => 65 via 65 (KEY_F7) */
++  [0x77] = 0x42,       /* 119 (VK_F8) => 66 via 66 (KEY_F8) */
++  [0x78] = 0x43,       /* 120 (VK_F9) => 67 via 67 (KEY_F9) */
++  [0x79] = 0x44,       /* 121 (VK_F10) => 68 via 68 (KEY_F10) */
++  [0x7a] = 0x57,       /* 122 (VK_F11) => 87 via 87 (KEY_F11) */
++  [0x7b] = 0x58,       /* 123 (VK_F12) => 88 via 88 (KEY_F12) */
++  [0x7c] = 0x5d,       /* 124 (VK_F13) => 93 via 183 (KEY_F13) */
++  [0x7d] = 0x5e,       /* 125 (VK_F14) => 94 via 184 (KEY_F14) */
++  [0x7e] = 0x5f,       /* 126 (VK_F15) => 95 via 185 (KEY_F15) */
++  [0x7f] = 0x55,       /* 127 (VK_F16) => 85 via 186 (KEY_F16) */
++  [0x80] = 0x103,      /* 128 (VK_F17) => 259 via 187 (KEY_F17) */
++  [0x81] = 0x177,      /* 129 (VK_F18) => 375 via 188 (KEY_F18) */
++  [0x82] = 0x104,      /* 130 (VK_F19) => 260 via 189 (KEY_F19) */
++  [0x83] = 0x5a,       /* 131 (VK_F20) => 90 via 190 (KEY_F20) */
++  [0x84] = 0x74,       /* 132 (VK_F21) => 116 via 191 (KEY_F21) */
++  [0x85] = 0x179,      /* 133 (VK_F22) => 377 via 192 (KEY_F22) */
++  [0x86] = 0x6d,       /* 134 (VK_F23) => 109 via 193 (KEY_F23) */
++  [0x87] = 0x6f,       /* 135 (VK_F24) => 111 via 194 (KEY_F24) */
++  [0x90] = 0x45,       /* 144 (VK_NUMLOCK) => 69 via 69 (KEY_NUMLOCK) */
++  [0x91] = 0x46,       /* 145 (VK_SCROLL) => 70 via 70 (KEY_SCROLLLOCK) */
++  [0xa0] = 0x2a,       /* 160 (VK_LSHIFT) => 42 via 42 (KEY_LEFTSHIFT) */
++  [0xa1] = 0x36,       /* 161 (VK_RSHIFT) => 54 via 54 (KEY_RIGHTSHIFT) */
++  [0xa2] = 0x1d,       /* 162 (VK_LCONTROL) => 29 via 29 (KEY_LEFTCTRL) */
++  [0xa3] = 0x11d,      /* 163 (VK_RCONTROL) => 285 via 97 (KEY_RIGHTCTRL) */
++  [0xa4] = 0x38,       /* 164 (VK_LMENU) => 56 via 56 (KEY_LEFTALT) */
++  [0xa5] = 0x138,      /* 165 (VK_RMENU) => 312 via 100 (KEY_RIGHTALT) */
++  [0xa6] = 0x16a,      /* 166 (VK_BROWSER_BACK) => 362 via 158 (KEY_BACK) */
++  [0xa7] = 0x169,      /* 167 (VK_BROWSER_FORWARD) => 361 via 159 (KEY_FORWARD) */
++  [0xa8] = 0x167,      /* 168 (VK_BROWSER_REFRESH) => 359 via 173 (KEY_REFRESH) */
++  [0xa9] = 0x168,      /* 169 (VK_BROWSER_STOP) => 360 via 128 (KEY_STOP) */
++  [0xaa] = 0x165,      /* 170 (VK_BROWSER_SEARCH) => 357 via 217 (KEY_SEARCH) */
++  [0xac] = 0x132,      /* 172 (VK_BROWSER_HOME) => 306 via 172 (KEY_HOMEPAGE) */
++  [0xad] = 0x120,      /* 173 (VK_VOLUME_MUTE) => 288 via 113 (KEY_MUTE) */
++  [0xae] = 0x12e,      /* 174 (VK_VOLUME_DOWN) => 302 via 114 (KEY_VOLUMEDOWN) */
++  [0xaf] = 0x130,      /* 175 (VK_VOLUME_UP) => 304 via 115 (KEY_VOLUMEUP) */
++  [0xb0] = 0x119,      /* 176 (VK_MEDIA_NEXT_TRACK) => 281 via 163 (KEY_NEXTSONG) */
++  [0xb1] = 0x110,      /* 177 (VK_MEDIA_PREV_TRACK) => 272 via 165 (KEY_PREVIOUSSONG) */
++  [0xb2] = 0x124,      /* 178 (VK_MEDIA_STOP) => 292 via 166 (KEY_STOPCD) */
++  [0xb3] = 0x122,      /* 179 (VK_MEDIA_PLAY_PAUSE) => 290 via 164 (KEY_PLAYPAUSE) */
++  [0xb4] = 0x13f,      /* 180 (VK_LAUNCH_MAIL) => 319 via 215 (KEY_EMAIL) */
++  [0xba] = 0x27,       /* 186 (VK_OEM_1) => 39 via 39 (KEY_SEMICOLON) */
++  [0xbb] = 0xd,        /* 187 (VK_OEM_PLUS) => 13 via 13 (KEY_EQUAL) */
++  [0xbc] = 0x33,       /* 188 (VK_OEM_COMMA) => 51 via 51 (KEY_COMMA) */
++  [0xbd] = 0xc,        /* 189 (VK_OEM_MINUS) => 12 via 12 (KEY_MINUS) */
++  [0xbe] = 0x34,       /* 190 (VK_OEM_PERIOD) => 52 via 52 (KEY_DOT) */
++  [0xbf] = 0x35,       /* 191 (VK_OEM_2) => 53 via 53 (KEY_SLASH) */
++  [0xc0] = 0x29,       /* 192 (VK_OEM_3) => 41 via 41 (KEY_GRAVE) */
++  [0xdb] = 0x1a,       /* 219 (VK_OEM_4) => 26 via 26 (KEY_LEFTBRACE) */
++  [0xdc] = 0x2b,       /* 220 (VK_OEM_5) => 43 via 43 (KEY_BACKSLASH) */
++  [0xdd] = 0x1b,       /* 221 (VK_OEM_6) => 27 via 27 (KEY_RIGHTBRACE) */
++  [0xe1] = 0x56,       /* 225 (VK_OEM_102) => 86 via 86 (KEY_102ND) */
++  [0xfa] = 0x133,      /* 250 (VK_PLAY) => 307 via 207 (KEY_PLAY) */
++};
+diff --git a/gtk/vncdisplaykeymap_xorgevdev2xtkbd.c b/gtk/vncdisplaykeymap_xorgevdev2xtkbd.c
+new file mode 100644
+index 0000000..462ec23
+--- /dev/null
++++ b/gtk/vncdisplaykeymap_xorgevdev2xtkbd.c
+@@ -0,0 +1,239 @@
++static const guint16 keymap_xorgevdev2xtkbd[] = {
++  [0x9] = 0x1,         /* 9 => 1 via 1 (KEY_ESC) */
++  [0xa] = 0x2,         /* 10 => 2 via 2 (KEY_1) */
++  [0xb] = 0x3,         /* 11 => 3 via 3 (KEY_2) */
++  [0xc] = 0x4,         /* 12 => 4 via 4 (KEY_3) */
++  [0xd] = 0x5,         /* 13 => 5 via 5 (KEY_4) */
++  [0xe] = 0x6,         /* 14 => 6 via 6 (KEY_5) */
++  [0xf] = 0x7,         /* 15 => 7 via 7 (KEY_6) */
++  [0x10] = 0x8,        /* 16 => 8 via 8 (KEY_7) */
++  [0x11] = 0x9,        /* 17 => 9 via 9 (KEY_8) */
++  [0x12] = 0xa,        /* 18 => 10 via 10 (KEY_9) */
++  [0x13] = 0xb,        /* 19 => 11 via 11 (KEY_0) */
++  [0x14] = 0xc,        /* 20 => 12 via 12 (KEY_MINUS) */
++  [0x15] = 0xd,        /* 21 => 13 via 13 (KEY_EQUAL) */
++  [0x16] = 0xe,        /* 22 => 14 via 14 (KEY_BACKSPACE) */
++  [0x17] = 0xf,        /* 23 => 15 via 15 (KEY_TAB) */
++  [0x18] = 0x10,       /* 24 => 16 via 16 (KEY_Q) */
++  [0x19] = 0x11,       /* 25 => 17 via 17 (KEY_W) */
++  [0x1a] = 0x12,       /* 26 => 18 via 18 (KEY_E) */
++  [0x1b] = 0x13,       /* 27 => 19 via 19 (KEY_R) */
++  [0x1c] = 0x14,       /* 28 => 20 via 20 (KEY_T) */
++  [0x1d] = 0x15,       /* 29 => 21 via 21 (KEY_Y) */
++  [0x1e] = 0x16,       /* 30 => 22 via 22 (KEY_U) */
++  [0x1f] = 0x17,       /* 31 => 23 via 23 (KEY_I) */
++  [0x20] = 0x18,       /* 32 => 24 via 24 (KEY_O) */
++  [0x21] = 0x19,       /* 33 => 25 via 25 (KEY_P) */
++  [0x22] = 0x1a,       /* 34 => 26 via 26 (KEY_LEFTBRACE) */
++  [0x23] = 0x1b,       /* 35 => 27 via 27 (KEY_RIGHTBRACE) */
++  [0x24] = 0x1c,       /* 36 => 28 via 28 (KEY_ENTER) */
++  [0x25] = 0x1d,       /* 37 => 29 via 29 (KEY_LEFTCTRL) */
++  [0x26] = 0x1e,       /* 38 => 30 via 30 (KEY_A) */
++  [0x27] = 0x1f,       /* 39 => 31 via 31 (KEY_S) */
++  [0x28] = 0x20,       /* 40 => 32 via 32 (KEY_D) */
++  [0x29] = 0x21,       /* 41 => 33 via 33 (KEY_F) */
++  [0x2a] = 0x22,       /* 42 => 34 via 34 (KEY_G) */
++  [0x2b] = 0x23,       /* 43 => 35 via 35 (KEY_H) */
++  [0x2c] = 0x24,       /* 44 => 36 via 36 (KEY_J) */
++  [0x2d] = 0x25,       /* 45 => 37 via 37 (KEY_K) */
++  [0x2e] = 0x26,       /* 46 => 38 via 38 (KEY_L) */
++  [0x2f] = 0x27,       /* 47 => 39 via 39 (KEY_SEMICOLON) */
++  [0x30] = 0x28,       /* 48 => 40 via 40 (KEY_APOSTROPHE) */
++  [0x31] = 0x29,       /* 49 => 41 via 41 (KEY_GRAVE) */
++  [0x32] = 0x2a,       /* 50 => 42 via 42 (KEY_LEFTSHIFT) */
++  [0x33] = 0x2b,       /* 51 => 43 via 43 (KEY_BACKSLASH) */
++  [0x34] = 0x2c,       /* 52 => 44 via 44 (KEY_Z) */
++  [0x35] = 0x2d,       /* 53 => 45 via 45 (KEY_X) */
++  [0x36] = 0x2e,       /* 54 => 46 via 46 (KEY_C) */
++  [0x37] = 0x2f,       /* 55 => 47 via 47 (KEY_V) */
++  [0x38] = 0x30,       /* 56 => 48 via 48 (KEY_B) */
++  [0x39] = 0x31,       /* 57 => 49 via 49 (KEY_N) */
++  [0x3a] = 0x32,       /* 58 => 50 via 50 (KEY_M) */
++  [0x3b] = 0x33,       /* 59 => 51 via 51 (KEY_COMMA) */
++  [0x3c] = 0x34,       /* 60 => 52 via 52 (KEY_DOT) */
++  [0x3d] = 0x35,       /* 61 => 53 via 53 (KEY_SLASH) */
++  [0x3e] = 0x36,       /* 62 => 54 via 54 (KEY_RIGHTSHIFT) */
++  [0x3f] = 0x37,       /* 63 => 55 via 55 (KEY_KPASTERISK) */
++  [0x40] = 0x38,       /* 64 => 56 via 56 (KEY_LEFTALT) */
++  [0x41] = 0x39,       /* 65 => 57 via 57 (KEY_SPACE) */
++  [0x42] = 0x3a,       /* 66 => 58 via 58 (KEY_CAPSLOCK) */
++  [0x43] = 0x3b,       /* 67 => 59 via 59 (KEY_F1) */
++  [0x44] = 0x3c,       /* 68 => 60 via 60 (KEY_F2) */
++  [0x45] = 0x3d,       /* 69 => 61 via 61 (KEY_F3) */
++  [0x46] = 0x3e,       /* 70 => 62 via 62 (KEY_F4) */
++  [0x47] = 0x3f,       /* 71 => 63 via 63 (KEY_F5) */
++  [0x48] = 0x40,       /* 72 => 64 via 64 (KEY_F6) */
++  [0x49] = 0x41,       /* 73 => 65 via 65 (KEY_F7) */
++  [0x4a] = 0x42,       /* 74 => 66 via 66 (KEY_F8) */
++  [0x4b] = 0x43,       /* 75 => 67 via 67 (KEY_F9) */
++  [0x4c] = 0x44,       /* 76 => 68 via 68 (KEY_F10) */
++  [0x4d] = 0x45,       /* 77 => 69 via 69 (KEY_NUMLOCK) */
++  [0x4e] = 0x46,       /* 78 => 70 via 70 (KEY_SCROLLLOCK) */
++  [0x4f] = 0x47,       /* 79 => 71 via 71 (KEY_KP7) */
++  [0x50] = 0x48,       /* 80 => 72 via 72 (KEY_KP8) */
++  [0x51] = 0x49,       /* 81 => 73 via 73 (KEY_KP9) */
++  [0x52] = 0x4a,       /* 82 => 74 via 74 (KEY_KPMINUS) */
++  [0x53] = 0x4b,       /* 83 => 75 via 75 (KEY_KP4) */
++  [0x54] = 0x4c,       /* 84 => 76 via 76 (KEY_KP5) */
++  [0x55] = 0x4d,       /* 85 => 77 via 77 (KEY_KP6) */
++  [0x56] = 0x4e,       /* 86 => 78 via 78 (KEY_KPPLUS) */
++  [0x57] = 0x4f,       /* 87 => 79 via 79 (KEY_KP1) */
++  [0x58] = 0x50,       /* 88 => 80 via 80 (KEY_KP2) */
++  [0x59] = 0x51,       /* 89 => 81 via 81 (KEY_KP3) */
++  [0x5a] = 0x52,       /* 90 => 82 via 82 (KEY_KP0) */
++  [0x5b] = 0x53,       /* 91 => 83 via 83 (KEY_KPDOT) */
++  [0x5c] = 0x54,       /* 92 => 84 via 84 */
++  [0x5d] = 0x76,       /* 93 => 118 via 85 (KEY_ZENKAKUHANKAKU) */
++  [0x5e] = 0x56,       /* 94 => 86 via 86 (KEY_102ND) */
++  [0x5f] = 0x57,       /* 95 => 87 via 87 (KEY_F11) */
++  [0x60] = 0x58,       /* 96 => 88 via 88 (KEY_F12) */
++  [0x61] = 0x73,       /* 97 => 115 via 89 (KEY_RO) */
++  [0x62] = 0x78,       /* 98 => 120 via 90 (KEY_KATAKANA) */
++  [0x63] = 0x77,       /* 99 => 119 via 91 (KEY_HIRAGANA) */
++  [0x64] = 0x79,       /* 100 => 121 via 92 (KEY_HENKAN) */
++  [0x66] = 0x7b,       /* 102 => 123 via 94 (KEY_MUHENKAN) */
++  [0x67] = 0x5c,       /* 103 => 92 via 95 (KEY_KPJPCOMMA) */
++  [0x68] = 0x11c,      /* 104 => 284 via 96 (KEY_KPENTER) */
++  [0x69] = 0x11d,      /* 105 => 285 via 97 (KEY_RIGHTCTRL) */
++  [0x6a] = 0x135,      /* 106 => 309 via 98 (KEY_KPSLASH) */
++  [0x6b] = 0x54,       /* 107 => 84 via 99 (KEY_SYSRQ) */
++  [0x6c] = 0x138,      /* 108 => 312 via 100 (KEY_RIGHTALT) */
++  [0x6d] = 0x5b,       /* 109 => 91 via 101 (KEY_LINEFEED) */
++  [0x6e] = 0x147,      /* 110 => 327 via 102 (KEY_HOME) */
++  [0x6f] = 0x148,      /* 111 => 328 via 103 (KEY_UP) */
++  [0x70] = 0x149,      /* 112 => 329 via 104 (KEY_PAGEUP) */
++  [0x71] = 0x14b,      /* 113 => 331 via 105 (KEY_LEFT) */
++  [0x72] = 0x14d,      /* 114 => 333 via 106 (KEY_RIGHT) */
++  [0x73] = 0x14f,      /* 115 => 335 via 107 (KEY_END) */
++  [0x74] = 0x150,      /* 116 => 336 via 108 (KEY_DOWN) */
++  [0x75] = 0x151,      /* 117 => 337 via 109 (KEY_PAGEDOWN) */
++  [0x76] = 0x152,      /* 118 => 338 via 110 (KEY_INSERT) */
++  [0x77] = 0x153,      /* 119 => 339 via 111 (KEY_DELETE) */
++  [0x78] = 0x16f,      /* 120 => 367 via 112 (KEY_MACRO) */
++  [0x79] = 0x120,      /* 121 => 288 via 113 (KEY_MUTE) */
++  [0x7a] = 0x12e,      /* 122 => 302 via 114 (KEY_VOLUMEDOWN) */
++  [0x7b] = 0x130,      /* 123 => 304 via 115 (KEY_VOLUMEUP) */
++  [0x7c] = 0x15e,      /* 124 => 350 via 116 (KEY_POWER) */
++  [0x7d] = 0x59,       /* 125 => 89 via 117 (KEY_KPEQUAL) */
++  [0x7e] = 0x14e,      /* 126 => 334 via 118 (KEY_KPPLUSMINUS) */
++  [0x7f] = 0x146,      /* 127 => 326 via 119 (KEY_PAUSE) */
++  [0x80] = 0x10b,      /* 128 => 267 via 120 (KEY_SCALE) */
++  [0x81] = 0x7e,       /* 129 => 126 via 121 (KEY_KPCOMMA) */
++  [0x83] = 0x10d,      /* 131 => 269 via 123 (KEY_HANJA) */
++  [0x84] = 0x7d,       /* 132 => 125 via 124 (KEY_YEN) */
++  [0x85] = 0x15b,      /* 133 => 347 via 125 (KEY_LEFTMETA) */
++  [0x86] = 0x15c,      /* 134 => 348 via 126 (KEY_RIGHTMETA) */
++  [0x87] = 0x15d,      /* 135 => 349 via 127 (KEY_COMPOSE) */
++  [0x88] = 0x168,      /* 136 => 360 via 128 (KEY_STOP) */
++  [0x89] = 0x105,      /* 137 => 261 via 129 (KEY_AGAIN) */
++  [0x8a] = 0x106,      /* 138 => 262 via 130 (KEY_PROPS) */
++  [0x8b] = 0x107,      /* 139 => 263 via 131 (KEY_UNDO) */
++  [0x8c] = 0x10c,      /* 140 => 268 via 132 (KEY_FRONT) */
++  [0x8d] = 0x178,      /* 141 => 376 via 133 (KEY_COPY) */
++  [0x8e] = 0x64,       /* 142 => 100 via 134 (KEY_OPEN) */
++  [0x8f] = 0x65,       /* 143 => 101 via 135 (KEY_PASTE) */
++  [0x90] = 0x141,      /* 144 => 321 via 136 (KEY_FIND) */
++  [0x91] = 0x13c,      /* 145 => 316 via 137 (KEY_CUT) */
++  [0x92] = 0x175,      /* 146 => 373 via 138 (KEY_HELP) */
++  [0x93] = 0x11e,      /* 147 => 286 via 139 (KEY_MENU) */
++  [0x94] = 0x121,      /* 148 => 289 via 140 (KEY_CALC) */
++  [0x95] = 0x66,       /* 149 => 102 via 141 (KEY_SETUP) */
++  [0x96] = 0x15f,      /* 150 => 351 via 142 (KEY_SLEEP) */
++  [0x97] = 0x163,      /* 151 => 355 via 143 (KEY_WAKEUP) */
++  [0x98] = 0x67,       /* 152 => 103 via 144 (KEY_FILE) */
++  [0x99] = 0x68,       /* 153 => 104 via 145 (KEY_SENDFILE) */
++  [0x9a] = 0x69,       /* 154 => 105 via 146 (KEY_DELETEFILE) */
++  [0x9b] = 0x113,      /* 155 => 275 via 147 (KEY_XFER) */
++  [0x9c] = 0x11f,      /* 156 => 287 via 148 (KEY_PROG1) */
++  [0x9d] = 0x117,      /* 157 => 279 via 149 (KEY_PROG2) */
++  [0x9e] = 0x102,      /* 158 => 258 via 150 (KEY_WWW) */
++  [0x9f] = 0x6a,       /* 159 => 106 via 151 (KEY_MSDOS) */
++  [0xa0] = 0x112,      /* 160 => 274 via 152 (KEY_SCREENLOCK) */
++  [0xa1] = 0x6b,       /* 161 => 107 via 153 (KEY_DIRECTION) */
++  [0xa2] = 0x126,      /* 162 => 294 via 154 (KEY_CYCLEWINDOWS) */
++  [0xa3] = 0x16c,      /* 163 => 364 via 155 (KEY_MAIL) */
++  [0xa4] = 0x166,      /* 164 => 358 via 156 (KEY_BOOKMARKS) */
++  [0xa5] = 0x16b,      /* 165 => 363 via 157 (KEY_COMPUTER) */
++  [0xa6] = 0x16a,      /* 166 => 362 via 158 (KEY_BACK) */
++  [0xa7] = 0x169,      /* 167 => 361 via 159 (KEY_FORWARD) */
++  [0xa8] = 0x123,      /* 168 => 291 via 160 (KEY_CLOSECD) */
++  [0xa9] = 0x6c,       /* 169 => 108 via 161 (KEY_EJECTCD) */
++  [0xaa] = 0x17d,      /* 170 => 381 via 162 (KEY_EJECTCLOSECD) */
++  [0xab] = 0x119,      /* 171 => 281 via 163 (KEY_NEXTSONG) */
++  [0xac] = 0x122,      /* 172 => 290 via 164 (KEY_PLAYPAUSE) */
++  [0xad] = 0x110,      /* 173 => 272 via 165 (KEY_PREVIOUSSONG) */
++  [0xae] = 0x124,      /* 174 => 292 via 166 (KEY_STOPCD) */
++  [0xaf] = 0x131,      /* 175 => 305 via 167 (KEY_RECORD) */
++  [0xb0] = 0x118,      /* 176 => 280 via 168 (KEY_REWIND) */
++  [0xb1] = 0x63,       /* 177 => 99 via 169 (KEY_PHONE) */
++  [0xb2] = 0x70,       /* 178 => 112 via 170 (KEY_ISO) */
++  [0xb3] = 0x101,      /* 179 => 257 via 171 (KEY_CONFIG) */
++  [0xb4] = 0x132,      /* 180 => 306 via 172 (KEY_HOMEPAGE) */
++  [0xb5] = 0x167,      /* 181 => 359 via 173 (KEY_REFRESH) */
++  [0xb6] = 0x71,       /* 182 => 113 via 174 (KEY_EXIT) */
++  [0xb7] = 0x72,       /* 183 => 114 via 175 (KEY_MOVE) */
++  [0xb8] = 0x108,      /* 184 => 264 via 176 (KEY_EDIT) */
++  [0xb9] = 0x75,       /* 185 => 117 via 177 (KEY_SCROLLUP) */
++  [0xba] = 0x10f,      /* 186 => 271 via 178 (KEY_SCROLLDOWN) */
++  [0xbb] = 0x176,      /* 187 => 374 via 179 (KEY_KPLEFTPAREN) */
++  [0xbc] = 0x17b,      /* 188 => 379 via 180 (KEY_KPRIGHTPAREN) */
++  [0xbd] = 0x109,      /* 189 => 265 via 181 (KEY_NEW) */
++  [0xbe] = 0x10a,      /* 190 => 266 via 182 (KEY_REDO) */
++  [0xbf] = 0x5d,       /* 191 => 93 via 183 (KEY_F13) */
++  [0xc0] = 0x5e,       /* 192 => 94 via 184 (KEY_F14) */
++  [0xc1] = 0x5f,       /* 193 => 95 via 185 (KEY_F15) */
++  [0xc2] = 0x55,       /* 194 => 85 via 186 (KEY_F16) */
++  [0xc3] = 0x103,      /* 195 => 259 via 187 (KEY_F17) */
++  [0xc4] = 0x177,      /* 196 => 375 via 188 (KEY_F18) */
++  [0xc5] = 0x104,      /* 197 => 260 via 189 (KEY_F19) */
++  [0xc6] = 0x5a,       /* 198 => 90 via 190 (KEY_F20) */
++  [0xc7] = 0x74,       /* 199 => 116 via 191 (KEY_F21) */
++  [0xc8] = 0x179,      /* 200 => 377 via 192 (KEY_F22) */
++  [0xc9] = 0x6d,       /* 201 => 109 via 193 (KEY_F23) */
++  [0xca] = 0x6f,       /* 202 => 111 via 194 (KEY_F24) */
++  [0xcb] = 0x115,      /* 203 => 277 via 195 */
++  [0xcc] = 0x116,      /* 204 => 278 via 196 */
++  [0xcd] = 0x11a,      /* 205 => 282 via 197 */
++  [0xce] = 0x11b,      /* 206 => 283 via 198 */
++  [0xcf] = 0x127,      /* 207 => 295 via 199 */
++  [0xd0] = 0x128,      /* 208 => 296 via 200 (KEY_PLAYCD) */
++  [0xd1] = 0x129,      /* 209 => 297 via 201 (KEY_PAUSECD) */
++  [0xd2] = 0x12b,      /* 210 => 299 via 202 (KEY_PROG3) */
++  [0xd3] = 0x12c,      /* 211 => 300 via 203 (KEY_PROG4) */
++  [0xd4] = 0x12d,      /* 212 => 301 via 204 (KEY_DASHBOARD) */
++  [0xd5] = 0x125,      /* 213 => 293 via 205 (KEY_SUSPEND) */
++  [0xd6] = 0x12f,      /* 214 => 303 via 206 (KEY_CLOSE) */
++  [0xd7] = 0x133,      /* 215 => 307 via 207 (KEY_PLAY) */
++  [0xd8] = 0x134,      /* 216 => 308 via 208 (KEY_FASTFORWARD) */
++  [0xd9] = 0x136,      /* 217 => 310 via 209 (KEY_BASSBOOST) */
++  [0xda] = 0x139,      /* 218 => 313 via 210 (KEY_PRINT) */
++  [0xdb] = 0x13a,      /* 219 => 314 via 211 (KEY_HP) */
++  [0xdc] = 0x13b,      /* 220 => 315 via 212 (KEY_CAMERA) */
++  [0xdd] = 0x13d,      /* 221 => 317 via 213 (KEY_SOUND) */
++  [0xde] = 0x13e,      /* 222 => 318 via 214 (KEY_QUESTION) */
++  [0xdf] = 0x13f,      /* 223 => 319 via 215 (KEY_EMAIL) */
++  [0xe0] = 0x140,      /* 224 => 320 via 216 (KEY_CHAT) */
++  [0xe1] = 0x165,      /* 225 => 357 via 217 (KEY_SEARCH) */
++  [0xe2] = 0x142,      /* 226 => 322 via 218 (KEY_CONNECT) */
++  [0xe3] = 0x143,      /* 227 => 323 via 219 (KEY_FINANCE) */
++  [0xe4] = 0x144,      /* 228 => 324 via 220 (KEY_SPORT) */
++  [0xe5] = 0x145,      /* 229 => 325 via 221 (KEY_SHOP) */
++  [0xe6] = 0x114,      /* 230 => 276 via 222 (KEY_ALTERASE) */
++  [0xe7] = 0x14a,      /* 231 => 330 via 223 (KEY_CANCEL) */
++  [0xe8] = 0x14c,      /* 232 => 332 via 224 (KEY_BRIGHTNESSDOWN) */
++  [0xe9] = 0x154,      /* 233 => 340 via 225 (KEY_BRIGHTNESSUP) */
++  [0xea] = 0x16d,      /* 234 => 365 via 226 (KEY_MEDIA) */
++  [0xeb] = 0x156,      /* 235 => 342 via 227 (KEY_SWITCHVIDEOMODE) */
++  [0xec] = 0x157,      /* 236 => 343 via 228 (KEY_KBDILLUMTOGGLE) */
++  [0xed] = 0x158,      /* 237 => 344 via 229 (KEY_KBDILLUMDOWN) */
++  [0xee] = 0x159,      /* 238 => 345 via 230 (KEY_KBDILLUMUP) */
++  [0xef] = 0x15a,      /* 239 => 346 via 231 (KEY_SEND) */
++  [0xf0] = 0x164,      /* 240 => 356 via 232 (KEY_REPLY) */
++  [0xf1] = 0x10e,      /* 241 => 270 via 233 (KEY_FORWARDMAIL) */
++  [0xf2] = 0x155,      /* 242 => 341 via 234 (KEY_SAVE) */
++  [0xf3] = 0x170,      /* 243 => 368 via 235 (KEY_DOCUMENTS) */
++  [0xf4] = 0x171,      /* 244 => 369 via 236 (KEY_BATTERY) */
++  [0xf5] = 0x172,      /* 245 => 370 via 237 (KEY_BLUETOOTH) */
++  [0xf6] = 0x173,      /* 246 => 371 via 238 (KEY_WLAN) */
++  [0xf7] = 0x174,      /* 247 => 372 via 239 (KEY_UWB) */
++};
+diff --git a/gtk/vncdisplaykeymap_xorgkbd2xtkbd.c b/gtk/vncdisplaykeymap_xorgkbd2xtkbd.c
+new file mode 100644
+index 0000000..8ad8293
+--- /dev/null
++++ b/gtk/vncdisplaykeymap_xorgkbd2xtkbd.c
+@@ -0,0 +1,111 @@
++static const guint16 keymap_xorgkbd2xtkbd[] = {
++  [0x9] = 0x1,         /* 9 => 1 via 1 (KEY_ESC) */
++  [0xa] = 0x2,         /* 10 => 2 via 2 (KEY_1) */
++  [0xb] = 0x3,         /* 11 => 3 via 3 (KEY_2) */
++  [0xc] = 0x4,         /* 12 => 4 via 4 (KEY_3) */
++  [0xd] = 0x5,         /* 13 => 5 via 5 (KEY_4) */
++  [0xe] = 0x6,         /* 14 => 6 via 6 (KEY_5) */
++  [0xf] = 0x7,         /* 15 => 7 via 7 (KEY_6) */
++  [0x10] = 0x8,        /* 16 => 8 via 8 (KEY_7) */
++  [0x11] = 0x9,        /* 17 => 9 via 9 (KEY_8) */
++  [0x12] = 0xa,        /* 18 => 10 via 10 (KEY_9) */
++  [0x13] = 0xb,        /* 19 => 11 via 11 (KEY_0) */
++  [0x14] = 0xc,        /* 20 => 12 via 12 (KEY_MINUS) */
++  [0x15] = 0xd,        /* 21 => 13 via 13 (KEY_EQUAL) */
++  [0x16] = 0xe,        /* 22 => 14 via 14 (KEY_BACKSPACE) */
++  [0x17] = 0xf,        /* 23 => 15 via 15 (KEY_TAB) */
++  [0x18] = 0x10,       /* 24 => 16 via 16 (KEY_Q) */
++  [0x19] = 0x11,       /* 25 => 17 via 17 (KEY_W) */
++  [0x1a] = 0x12,       /* 26 => 18 via 18 (KEY_E) */
++  [0x1b] = 0x13,       /* 27 => 19 via 19 (KEY_R) */
++  [0x1c] = 0x14,       /* 28 => 20 via 20 (KEY_T) */
++  [0x1d] = 0x15,       /* 29 => 21 via 21 (KEY_Y) */
++  [0x1e] = 0x16,       /* 30 => 22 via 22 (KEY_U) */
++  [0x1f] = 0x17,       /* 31 => 23 via 23 (KEY_I) */
++  [0x20] = 0x18,       /* 32 => 24 via 24 (KEY_O) */
++  [0x21] = 0x19,       /* 33 => 25 via 25 (KEY_P) */
++  [0x22] = 0x1a,       /* 34 => 26 via 26 (KEY_LEFTBRACE) */
++  [0x23] = 0x1b,       /* 35 => 27 via 27 (KEY_RIGHTBRACE) */
++  [0x24] = 0x1c,       /* 36 => 28 via 28 (KEY_ENTER) */
++  [0x25] = 0x1d,       /* 37 => 29 via 29 (KEY_LEFTCTRL) */
++  [0x26] = 0x1e,       /* 38 => 30 via 30 (KEY_A) */
++  [0x27] = 0x1f,       /* 39 => 31 via 31 (KEY_S) */
++  [0x28] = 0x20,       /* 40 => 32 via 32 (KEY_D) */
++  [0x29] = 0x21,       /* 41 => 33 via 33 (KEY_F) */
++  [0x2a] = 0x22,       /* 42 => 34 via 34 (KEY_G) */
++  [0x2b] = 0x23,       /* 43 => 35 via 35 (KEY_H) */
++  [0x2c] = 0x24,       /* 44 => 36 via 36 (KEY_J) */
++  [0x2d] = 0x25,       /* 45 => 37 via 37 (KEY_K) */
++  [0x2e] = 0x26,       /* 46 => 38 via 38 (KEY_L) */
++  [0x2f] = 0x27,       /* 47 => 39 via 39 (KEY_SEMICOLON) */
++  [0x30] = 0x28,       /* 48 => 40 via 40 (KEY_APOSTROPHE) */
++  [0x31] = 0x29,       /* 49 => 41 via 41 (KEY_GRAVE) */
++  [0x32] = 0x2a,       /* 50 => 42 via 42 (KEY_LEFTSHIFT) */
++  [0x33] = 0x2b,       /* 51 => 43 via 43 (KEY_BACKSLASH) */
++  [0x34] = 0x2c,       /* 52 => 44 via 44 (KEY_Z) */
++  [0x35] = 0x2d,       /* 53 => 45 via 45 (KEY_X) */
++  [0x36] = 0x2e,       /* 54 => 46 via 46 (KEY_C) */
++  [0x37] = 0x2f,       /* 55 => 47 via 47 (KEY_V) */
++  [0x38] = 0x30,       /* 56 => 48 via 48 (KEY_B) */
++  [0x39] = 0x31,       /* 57 => 49 via 49 (KEY_N) */
++  [0x3a] = 0x32,       /* 58 => 50 via 50 (KEY_M) */
++  [0x3b] = 0x33,       /* 59 => 51 via 51 (KEY_COMMA) */
++  [0x3c] = 0x34,       /* 60 => 52 via 52 (KEY_DOT) */
++  [0x3d] = 0x35,       /* 61 => 53 via 53 (KEY_SLASH) */
++  [0x3e] = 0x36,       /* 62 => 54 via 54 (KEY_RIGHTSHIFT) */
++  [0x3f] = 0x37,       /* 63 => 55 via 55 (KEY_KPASTERISK) */
++  [0x40] = 0x38,       /* 64 => 56 via 56 (KEY_LEFTALT) */
++  [0x41] = 0x39,       /* 65 => 57 via 57 (KEY_SPACE) */
++  [0x42] = 0x3a,       /* 66 => 58 via 58 (KEY_CAPSLOCK) */
++  [0x43] = 0x3b,       /* 67 => 59 via 59 (KEY_F1) */
++  [0x44] = 0x3c,       /* 68 => 60 via 60 (KEY_F2) */
++  [0x45] = 0x3d,       /* 69 => 61 via 61 (KEY_F3) */
++  [0x46] = 0x3e,       /* 70 => 62 via 62 (KEY_F4) */
++  [0x47] = 0x3f,       /* 71 => 63 via 63 (KEY_F5) */
++  [0x48] = 0x40,       /* 72 => 64 via 64 (KEY_F6) */
++  [0x49] = 0x41,       /* 73 => 65 via 65 (KEY_F7) */
++  [0x4a] = 0x42,       /* 74 => 66 via 66 (KEY_F8) */
++  [0x4b] = 0x43,       /* 75 => 67 via 67 (KEY_F9) */
++  [0x4c] = 0x44,       /* 76 => 68 via 68 (KEY_F10) */
++  [0x4d] = 0x45,       /* 77 => 69 via 69 (KEY_NUMLOCK) */
++  [0x4e] = 0x46,       /* 78 => 70 via 70 (KEY_SCROLLLOCK) */
++  [0x4f] = 0x47,       /* 79 => 71 via 71 (KEY_KP7) */
++  [0x50] = 0x48,       /* 80 => 72 via 72 (KEY_KP8) */
++  [0x51] = 0x49,       /* 81 => 73 via 73 (KEY_KP9) */
++  [0x52] = 0x4a,       /* 82 => 74 via 74 (KEY_KPMINUS) */
++  [0x53] = 0x4b,       /* 83 => 75 via 75 (KEY_KP4) */
++  [0x54] = 0x4c,       /* 84 => 76 via 76 (KEY_KP5) */
++  [0x55] = 0x4d,       /* 85 => 77 via 77 (KEY_KP6) */
++  [0x56] = 0x4e,       /* 86 => 78 via 78 (KEY_KPPLUS) */
++  [0x57] = 0x4f,       /* 87 => 79 via 79 (KEY_KP1) */
++  [0x58] = 0x50,       /* 88 => 80 via 80 (KEY_KP2) */
++  [0x59] = 0x51,       /* 89 => 81 via 81 (KEY_KP3) */
++  [0x5a] = 0x52,       /* 90 => 82 via 82 (KEY_KP0) */
++  [0x5b] = 0x53,       /* 91 => 83 via 83 (KEY_KPDOT) */
++  [0x61] = 0x147,      /* 97 => 327 via 102 (KEY_HOME) */
++  [0x62] = 0x148,      /* 98 => 328 via 103 (KEY_UP) */
++  [0x63] = 0x149,      /* 99 => 329 via 104 (KEY_PAGEUP) */
++  [0x64] = 0x14b,      /* 100 => 331 via 105 (KEY_LEFT) */
++  [0x66] = 0x14d,      /* 102 => 333 via 106 (KEY_RIGHT) */
++  [0x67] = 0x14f,      /* 103 => 335 via 107 (KEY_END) */
++  [0x68] = 0x150,      /* 104 => 336 via 108 (KEY_DOWN) */
++  [0x69] = 0x151,      /* 105 => 337 via 109 (KEY_PAGEDOWN) */
++  [0x6a] = 0x152,      /* 106 => 338 via 110 (KEY_INSERT) */
++  [0x6b] = 0x153,      /* 107 => 339 via 111 (KEY_DELETE) */
++  [0x6c] = 0x11c,      /* 108 => 284 via 96 (KEY_KPENTER) */
++  [0x6d] = 0x11d,      /* 109 => 285 via 97 (KEY_RIGHTCTRL) */
++  [0x6e] = 0x146,      /* 110 => 326 via 119 (KEY_PAUSE) */
++  [0x6f] = 0x54,       /* 111 => 84 via 99 (KEY_SYSRQ) */
++  [0x70] = 0x135,      /* 112 => 309 via 98 (KEY_KPSLASH) */
++  [0x71] = 0x138,      /* 113 => 312 via 100 (KEY_RIGHTALT) */
++  [0x73] = 0x15b,      /* 115 => 347 via 125 (KEY_LEFTMETA) */
++  [0x74] = 0x15c,      /* 116 => 348 via 126 (KEY_RIGHTMETA) */
++  [0x75] = 0x15d,      /* 117 => 349 via 127 (KEY_COMPOSE) */
++  [0x76] = 0x5d,       /* 118 => 93 via 183 (KEY_F13) */
++  [0x77] = 0x5e,       /* 119 => 94 via 184 (KEY_F14) */
++  [0x78] = 0x5f,       /* 120 => 95 via 185 (KEY_F15) */
++  [0x79] = 0x55,       /* 121 => 85 via 186 (KEY_F16) */
++  [0x7a] = 0x103,      /* 122 => 259 via 187 (KEY_F17) */
++  [0x7e] = 0x59,       /* 126 => 89 via 117 (KEY_KPEQUAL) */
++  [0x85] = 0x7d,       /* 133 => 125 via 124 (KEY_YEN) */
++};
+diff --git a/gtk/vncdisplaykeymap_xorgxquartz2xtkbd.c b/gtk/vncdisplaykeymap_xorgxquartz2xtkbd.c
+new file mode 100644
+index 0000000..60e3cc9
+--- /dev/null
++++ b/gtk/vncdisplaykeymap_xorgxquartz2xtkbd.c
+@@ -0,0 +1,116 @@
++static const guint16 keymap_xorgxquartz2xtkbd[] = {
++  [0x9] = 0x1f,        /* 9 => 31 via 31 (KEY_S) */
++  [0xa] = 0x20,        /* 10 => 32 via 32 (KEY_D) */
++  [0xb] = 0x21,        /* 11 => 33 via 33 (KEY_F) */
++  [0xc] = 0x23,        /* 12 => 35 via 35 (KEY_H) */
++  [0xd] = 0x22,        /* 13 => 34 via 34 (KEY_G) */
++  [0xe] = 0x2c,        /* 14 => 44 via 44 (KEY_Z) */
++  [0xf] = 0x2d,        /* 15 => 45 via 45 (KEY_X) */
++  [0x10] = 0x2e,       /* 16 => 46 via 46 (KEY_C) */
++  [0x11] = 0x2f,       /* 17 => 47 via 47 (KEY_V) */
++  [0x12] = 0x70,       /* 18 => 112 via 170 (KEY_ISO) */
++  [0x13] = 0x30,       /* 19 => 48 via 48 (KEY_B) */
++  [0x14] = 0x10,       /* 20 => 16 via 16 (KEY_Q) */
++  [0x15] = 0x11,       /* 21 => 17 via 17 (KEY_W) */
++  [0x16] = 0x12,       /* 22 => 18 via 18 (KEY_E) */
++  [0x17] = 0x13,       /* 23 => 19 via 19 (KEY_R) */
++  [0x18] = 0x15,       /* 24 => 21 via 21 (KEY_Y) */
++  [0x19] = 0x14,       /* 25 => 20 via 20 (KEY_T) */
++  [0x1a] = 0x2,        /* 26 => 2 via 2 (KEY_1) */
++  [0x1b] = 0x3,        /* 27 => 3 via 3 (KEY_2) */
++  [0x1c] = 0x4,        /* 28 => 4 via 4 (KEY_3) */
++  [0x1d] = 0x5,        /* 29 => 5 via 5 (KEY_4) */
++  [0x1e] = 0x7,        /* 30 => 7 via 7 (KEY_6) */
++  [0x1f] = 0x6,        /* 31 => 6 via 6 (KEY_5) */
++  [0x20] = 0xd,        /* 32 => 13 via 13 (KEY_EQUAL) */
++  [0x21] = 0xa,        /* 33 => 10 via 10 (KEY_9) */
++  [0x22] = 0x8,        /* 34 => 8 via 8 (KEY_7) */
++  [0x23] = 0xc,        /* 35 => 12 via 12 (KEY_MINUS) */
++  [0x24] = 0x9,        /* 36 => 9 via 9 (KEY_8) */
++  [0x25] = 0xb,        /* 37 => 11 via 11 (KEY_0) */
++  [0x26] = 0x1b,       /* 38 => 27 via 27 (KEY_RIGHTBRACE) */
++  [0x27] = 0x18,       /* 39 => 24 via 24 (KEY_O) */
++  [0x28] = 0x16,       /* 40 => 22 via 22 (KEY_U) */
++  [0x29] = 0x1a,       /* 41 => 26 via 26 (KEY_LEFTBRACE) */
++  [0x2a] = 0x17,       /* 42 => 23 via 23 (KEY_I) */
++  [0x2b] = 0x19,       /* 43 => 25 via 25 (KEY_P) */
++  [0x2c] = 0x1c,       /* 44 => 28 via 28 (KEY_ENTER) */
++  [0x2d] = 0x26,       /* 45 => 38 via 38 (KEY_L) */
++  [0x2e] = 0x24,       /* 46 => 36 via 36 (KEY_J) */
++  [0x2f] = 0x28,       /* 47 => 40 via 40 (KEY_APOSTROPHE) */
++  [0x30] = 0x25,       /* 48 => 37 via 37 (KEY_K) */
++  [0x31] = 0x27,       /* 49 => 39 via 39 (KEY_SEMICOLON) */
++  [0x32] = 0x2b,       /* 50 => 43 via 43 (KEY_BACKSLASH) */
++  [0x33] = 0x33,       /* 51 => 51 via 51 (KEY_COMMA) */
++  [0x34] = 0x35,       /* 52 => 53 via 53 (KEY_SLASH) */
++  [0x35] = 0x31,       /* 53 => 49 via 49 (KEY_N) */
++  [0x36] = 0x32,       /* 54 => 50 via 50 (KEY_M) */
++  [0x37] = 0x34,       /* 55 => 52 via 52 (KEY_DOT) */
++  [0x38] = 0xf,        /* 56 => 15 via 15 (KEY_TAB) */
++  [0x39] = 0x39,       /* 57 => 57 via 57 (KEY_SPACE) */
++  [0x3a] = 0x29,       /* 58 => 41 via 41 (KEY_GRAVE) */
++  [0x3b] = 0xe,        /* 59 => 14 via 14 (KEY_BACKSPACE) */
++  [0x3d] = 0x1,        /* 61 => 1 via 1 (KEY_ESC) */
++  [0x3f] = 0x15b,      /* 63 => 347 via 125 (KEY_LEFTMETA) */
++  [0x40] = 0x2a,       /* 64 => 42 via 42 (KEY_LEFTSHIFT) */
++  [0x41] = 0x3a,       /* 65 => 58 via 58 (KEY_CAPSLOCK) */
++  [0x42] = 0x38,       /* 66 => 56 via 56 (KEY_LEFTALT) */
++  [0x43] = 0x1d,       /* 67 => 29 via 29 (KEY_LEFTCTRL) */
++  [0x44] = 0x36,       /* 68 => 54 via 54 (KEY_RIGHTSHIFT) */
++  [0x45] = 0x138,      /* 69 => 312 via 100 (KEY_RIGHTALT) */
++  [0x46] = 0x11d,      /* 70 => 285 via 97 (KEY_RIGHTCTRL) */
++  [0x47] = 0x15d,      /* 71 => 349 via 127 (KEY_COMPOSE) */
++  [0x48] = 0x103,      /* 72 => 259 via 187 (KEY_F17) */
++  [0x49] = 0x53,       /* 73 => 83 via 83 (KEY_KPDOT) */
++  [0x4b] = 0x37,       /* 75 => 55 via 55 (KEY_KPASTERISK) */
++  [0x4d] = 0x4e,       /* 77 => 78 via 78 (KEY_KPPLUS) */
++  [0x4f] = 0x7e,       /* 79 => 126 via 121 (KEY_KPCOMMA) */
++  [0x50] = 0x130,      /* 80 => 304 via 115 (KEY_VOLUMEUP) */
++  [0x51] = 0x12e,      /* 81 => 302 via 114 (KEY_VOLUMEDOWN) */
++  [0x52] = 0x120,      /* 82 => 288 via 113 (KEY_MUTE) */
++  [0x53] = 0x135,      /* 83 => 309 via 98 (KEY_KPSLASH) */
++  [0x54] = 0x11c,      /* 84 => 284 via 96 (KEY_KPENTER) */
++  [0x56] = 0x4a,       /* 86 => 74 via 74 (KEY_KPMINUS) */
++  [0x57] = 0x177,      /* 87 => 375 via 188 (KEY_F18) */
++  [0x58] = 0x104,      /* 88 => 260 via 189 (KEY_F19) */
++  [0x59] = 0x59,       /* 89 => 89 via 117 (KEY_KPEQUAL) */
++  [0x5a] = 0x52,       /* 90 => 82 via 82 (KEY_KP0) */
++  [0x5b] = 0x4f,       /* 91 => 79 via 79 (KEY_KP1) */
++  [0x5c] = 0x50,       /* 92 => 80 via 80 (KEY_KP2) */
++  [0x5d] = 0x51,       /* 93 => 81 via 81 (KEY_KP3) */
++  [0x5e] = 0x4b,       /* 94 => 75 via 75 (KEY_KP4) */
++  [0x5f] = 0x4c,       /* 95 => 76 via 76 (KEY_KP5) */
++  [0x60] = 0x4d,       /* 96 => 77 via 77 (KEY_KP6) */
++  [0x61] = 0x47,       /* 97 => 71 via 71 (KEY_KP7) */
++  [0x62] = 0x5a,       /* 98 => 90 via 190 (KEY_F20) */
++  [0x63] = 0x48,       /* 99 => 72 via 72 (KEY_KP8) */
++  [0x64] = 0x49,       /* 100 => 73 via 73 (KEY_KP9) */
++  [0x65] = 0x7d,       /* 101 => 125 via 124 (KEY_YEN) */
++  [0x67] = 0x5c,       /* 103 => 92 via 95 (KEY_KPJPCOMMA) */
++  [0x68] = 0x3f,       /* 104 => 63 via 63 (KEY_F5) */
++  [0x69] = 0x40,       /* 105 => 64 via 64 (KEY_F6) */
++  [0x6a] = 0x41,       /* 106 => 65 via 65 (KEY_F7) */
++  [0x6b] = 0x3d,       /* 107 => 61 via 61 (KEY_F3) */
++  [0x6c] = 0x42,       /* 108 => 66 via 66 (KEY_F8) */
++  [0x6d] = 0x43,       /* 109 => 67 via 67 (KEY_F9) */
++  [0x6f] = 0x57,       /* 111 => 87 via 87 (KEY_F11) */
++  [0x70] = 0x78,       /* 112 => 120 via 90 (KEY_KATAKANA) */
++  [0x71] = 0x5d,       /* 113 => 93 via 183 (KEY_F13) */
++  [0x72] = 0x55,       /* 114 => 85 via 186 (KEY_F16) */
++  [0x73] = 0x5e,       /* 115 => 94 via 184 (KEY_F14) */
++  [0x75] = 0x44,       /* 117 => 68 via 68 (KEY_F10) */
++  [0x77] = 0x58,       /* 119 => 88 via 88 (KEY_F12) */
++  [0x79] = 0x5f,       /* 121 => 95 via 185 (KEY_F15) */
++  [0x7b] = 0x147,      /* 123 => 327 via 102 (KEY_HOME) */
++  [0x7c] = 0x149,      /* 124 => 329 via 104 (KEY_PAGEUP) */
++  [0x7d] = 0x153,      /* 125 => 339 via 111 (KEY_DELETE) */
++  [0x7e] = 0x3e,       /* 126 => 62 via 62 (KEY_F4) */
++  [0x7f] = 0x14f,      /* 127 => 335 via 107 (KEY_END) */
++  [0x80] = 0x3c,       /* 128 => 60 via 60 (KEY_F2) */
++  [0x81] = 0x151,      /* 129 => 337 via 109 (KEY_PAGEDOWN) */
++  [0x82] = 0x3b,       /* 130 => 59 via 59 (KEY_F1) */
++  [0x83] = 0x14b,      /* 131 => 331 via 105 (KEY_LEFT) */
++  [0x84] = 0x14d,      /* 132 => 333 via 106 (KEY_RIGHT) */
++  [0x85] = 0x150,      /* 133 => 336 via 108 (KEY_DOWN) */
++  [0x86] = 0x148,      /* 134 => 328 via 103 (KEY_UP) */
++};
+diff --git a/gtk/vncdisplaykeymap_xorgxwin2xtkbd.c b/gtk/vncdisplaykeymap_xorgxwin2xtkbd.c
+new file mode 100644
+index 0000000..a7a1ad2
+--- /dev/null
++++ b/gtk/vncdisplaykeymap_xorgxwin2xtkbd.c
+@@ -0,0 +1,111 @@
++static const guint16 keymap_xorgxwin2xtkbd[] = {
++  [0x9] = 0x1,         /* 9 => 1 via 1 (KEY_ESC) */
++  [0xa] = 0x2,         /* 10 => 2 via 2 (KEY_1) */
++  [0xb] = 0x3,         /* 11 => 3 via 3 (KEY_2) */
++  [0xc] = 0x4,         /* 12 => 4 via 4 (KEY_3) */
++  [0xd] = 0x5,         /* 13 => 5 via 5 (KEY_4) */
++  [0xe] = 0x6,         /* 14 => 6 via 6 (KEY_5) */
++  [0xf] = 0x7,         /* 15 => 7 via 7 (KEY_6) */
++  [0x10] = 0x8,        /* 16 => 8 via 8 (KEY_7) */
++  [0x11] = 0x9,        /* 17 => 9 via 9 (KEY_8) */
++  [0x12] = 0xa,        /* 18 => 10 via 10 (KEY_9) */
++  [0x13] = 0xb,        /* 19 => 11 via 11 (KEY_0) */
++  [0x14] = 0xc,        /* 20 => 12 via 12 (KEY_MINUS) */
++  [0x15] = 0xd,        /* 21 => 13 via 13 (KEY_EQUAL) */
++  [0x16] = 0xe,        /* 22 => 14 via 14 (KEY_BACKSPACE) */
++  [0x17] = 0xf,        /* 23 => 15 via 15 (KEY_TAB) */
++  [0x18] = 0x10,       /* 24 => 16 via 16 (KEY_Q) */
++  [0x19] = 0x11,       /* 25 => 17 via 17 (KEY_W) */
++  [0x1a] = 0x12,       /* 26 => 18 via 18 (KEY_E) */
++  [0x1b] = 0x13,       /* 27 => 19 via 19 (KEY_R) */
++  [0x1c] = 0x14,       /* 28 => 20 via 20 (KEY_T) */
++  [0x1d] = 0x15,       /* 29 => 21 via 21 (KEY_Y) */
++  [0x1e] = 0x16,       /* 30 => 22 via 22 (KEY_U) */
++  [0x1f] = 0x17,       /* 31 => 23 via 23 (KEY_I) */
++  [0x20] = 0x18,       /* 32 => 24 via 24 (KEY_O) */
++  [0x21] = 0x19,       /* 33 => 25 via 25 (KEY_P) */
++  [0x22] = 0x1a,       /* 34 => 26 via 26 (KEY_LEFTBRACE) */
++  [0x23] = 0x1b,       /* 35 => 27 via 27 (KEY_RIGHTBRACE) */
++  [0x24] = 0x1c,       /* 36 => 28 via 28 (KEY_ENTER) */
++  [0x25] = 0x1d,       /* 37 => 29 via 29 (KEY_LEFTCTRL) */
++  [0x26] = 0x1e,       /* 38 => 30 via 30 (KEY_A) */
++  [0x27] = 0x1f,       /* 39 => 31 via 31 (KEY_S) */
++  [0x28] = 0x20,       /* 40 => 32 via 32 (KEY_D) */
++  [0x29] = 0x21,       /* 41 => 33 via 33 (KEY_F) */
++  [0x2a] = 0x22,       /* 42 => 34 via 34 (KEY_G) */
++  [0x2b] = 0x23,       /* 43 => 35 via 35 (KEY_H) */
++  [0x2c] = 0x24,       /* 44 => 36 via 36 (KEY_J) */
++  [0x2d] = 0x25,       /* 45 => 37 via 37 (KEY_K) */
++  [0x2e] = 0x26,       /* 46 => 38 via 38 (KEY_L) */
++  [0x2f] = 0x27,       /* 47 => 39 via 39 (KEY_SEMICOLON) */
++  [0x30] = 0x28,       /* 48 => 40 via 40 (KEY_APOSTROPHE) */
++  [0x31] = 0x29,       /* 49 => 41 via 41 (KEY_GRAVE) */
++  [0x32] = 0x2a,       /* 50 => 42 via 42 (KEY_LEFTSHIFT) */
++  [0x33] = 0x2b,       /* 51 => 43 via 43 (KEY_BACKSLASH) */
++  [0x34] = 0x2c,       /* 52 => 44 via 44 (KEY_Z) */
++  [0x35] = 0x2d,       /* 53 => 45 via 45 (KEY_X) */
++  [0x36] = 0x2e,       /* 54 => 46 via 46 (KEY_C) */
++  [0x37] = 0x2f,       /* 55 => 47 via 47 (KEY_V) */
++  [0x38] = 0x30,       /* 56 => 48 via 48 (KEY_B) */
++  [0x39] = 0x31,       /* 57 => 49 via 49 (KEY_N) */
++  [0x3a] = 0x32,       /* 58 => 50 via 50 (KEY_M) */
++  [0x3b] = 0x33,       /* 59 => 51 via 51 (KEY_COMMA) */
++  [0x3c] = 0x34,       /* 60 => 52 via 52 (KEY_DOT) */
++  [0x3d] = 0x35,       /* 61 => 53 via 53 (KEY_SLASH) */
++  [0x3e] = 0x36,       /* 62 => 54 via 54 (KEY_RIGHTSHIFT) */
++  [0x3f] = 0x37,       /* 63 => 55 via 55 (KEY_KPASTERISK) */
++  [0x40] = 0x38,       /* 64 => 56 via 56 (KEY_LEFTALT) */
++  [0x41] = 0x39,       /* 65 => 57 via 57 (KEY_SPACE) */
++  [0x42] = 0x3a,       /* 66 => 58 via 58 (KEY_CAPSLOCK) */
++  [0x43] = 0x3b,       /* 67 => 59 via 59 (KEY_F1) */
++  [0x44] = 0x3c,       /* 68 => 60 via 60 (KEY_F2) */
++  [0x45] = 0x3d,       /* 69 => 61 via 61 (KEY_F3) */
++  [0x46] = 0x3e,       /* 70 => 62 via 62 (KEY_F4) */
++  [0x47] = 0x3f,       /* 71 => 63 via 63 (KEY_F5) */
++  [0x48] = 0x40,       /* 72 => 64 via 64 (KEY_F6) */
++  [0x49] = 0x41,       /* 73 => 65 via 65 (KEY_F7) */
++  [0x4a] = 0x42,       /* 74 => 66 via 66 (KEY_F8) */
++  [0x4b] = 0x43,       /* 75 => 67 via 67 (KEY_F9) */
++  [0x4c] = 0x44,       /* 76 => 68 via 68 (KEY_F10) */
++  [0x4d] = 0x45,       /* 77 => 69 via 69 (KEY_NUMLOCK) */
++  [0x4e] = 0x46,       /* 78 => 70 via 70 (KEY_SCROLLLOCK) */
++  [0x4f] = 0x47,       /* 79 => 71 via 71 (KEY_KP7) */
++  [0x50] = 0x48,       /* 80 => 72 via 72 (KEY_KP8) */
++  [0x51] = 0x49,       /* 81 => 73 via 73 (KEY_KP9) */
++  [0x52] = 0x4a,       /* 82 => 74 via 74 (KEY_KPMINUS) */
++  [0x53] = 0x4b,       /* 83 => 75 via 75 (KEY_KP4) */
++  [0x54] = 0x4c,       /* 84 => 76 via 76 (KEY_KP5) */
++  [0x55] = 0x4d,       /* 85 => 77 via 77 (KEY_KP6) */
++  [0x56] = 0x4e,       /* 86 => 78 via 78 (KEY_KPPLUS) */
++  [0x57] = 0x4f,       /* 87 => 79 via 79 (KEY_KP1) */
++  [0x58] = 0x50,       /* 88 => 80 via 80 (KEY_KP2) */
++  [0x59] = 0x51,       /* 89 => 81 via 81 (KEY_KP3) */
++  [0x5a] = 0x52,       /* 90 => 82 via 82 (KEY_KP0) */
++  [0x5b] = 0x53,       /* 91 => 83 via 83 (KEY_KPDOT) */
++  [0x61] = 0x147,      /* 97 => 327 via 102 (KEY_HOME) */
++  [0x62] = 0x148,      /* 98 => 328 via 103 (KEY_UP) */
++  [0x63] = 0x149,      /* 99 => 329 via 104 (KEY_PAGEUP) */
++  [0x64] = 0x14b,      /* 100 => 331 via 105 (KEY_LEFT) */
++  [0x66] = 0x14d,      /* 102 => 333 via 106 (KEY_RIGHT) */
++  [0x67] = 0x14f,      /* 103 => 335 via 107 (KEY_END) */
++  [0x68] = 0x150,      /* 104 => 336 via 108 (KEY_DOWN) */
++  [0x69] = 0x151,      /* 105 => 337 via 109 (KEY_PAGEDOWN) */
++  [0x6a] = 0x152,      /* 106 => 338 via 110 (KEY_INSERT) */
++  [0x6b] = 0x153,      /* 107 => 339 via 111 (KEY_DELETE) */
++  [0x6c] = 0x11c,      /* 108 => 284 via 96 (KEY_KPENTER) */
++  [0x6d] = 0x11d,      /* 109 => 285 via 97 (KEY_RIGHTCTRL) */
++  [0x6e] = 0x146,      /* 110 => 326 via 119 (KEY_PAUSE) */
++  [0x6f] = 0x54,       /* 111 => 84 via 99 (KEY_SYSRQ) */
++  [0x70] = 0x135,      /* 112 => 309 via 98 (KEY_KPSLASH) */
++  [0x71] = 0x138,      /* 113 => 312 via 100 (KEY_RIGHTALT) */
++  [0x73] = 0x15b,      /* 115 => 347 via 125 (KEY_LEFTMETA) */
++  [0x74] = 0x15c,      /* 116 => 348 via 126 (KEY_RIGHTMETA) */
++  [0x75] = 0x15d,      /* 117 => 349 via 127 (KEY_COMPOSE) */
++  [0x76] = 0x5d,       /* 118 => 93 via 183 (KEY_F13) */
++  [0x77] = 0x5e,       /* 119 => 94 via 184 (KEY_F14) */
++  [0x78] = 0x5f,       /* 120 => 95 via 185 (KEY_F15) */
++  [0x79] = 0x55,       /* 121 => 85 via 186 (KEY_F16) */
++  [0x7a] = 0x103,      /* 122 => 259 via 187 (KEY_F17) */
++  [0x7e] = 0x59,       /* 126 => 89 via 117 (KEY_KPEQUAL) */
++  [0x85] = 0x7d,       /* 133 => 125 via 124 (KEY_YEN) */
++};
+-- 
+1.7.6
+

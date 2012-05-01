@@ -1,0 +1,20 @@
+--- a/gtk/controller/controller.c
++++ b/gtk/controller/controller.c
+@@ -15,6 +15,7 @@
+ 
+ #include <glib.h>
+ #include <glib-object.h>
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <spice/controller_prot.h>
+--- a/gtk/controller/menu.c
++++ b/gtk/controller/menu.c
+@@ -15,6 +15,7 @@
+ 
+ #include <glib.h>
+ #include <glib-object.h>
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <spice/controller_prot.h>

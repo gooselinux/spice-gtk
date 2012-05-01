@@ -1,0 +1,54 @@
+diff --git a/configure b/configure
+index 285ff7b..1a8e24a 100755
+--- a/configure
++++ b/configure
+@@ -19495,12 +19495,12 @@ if test -n "$GLIB2_CFLAGS"; then
+     pkg_cv_GLIB2_CFLAGS="$GLIB2_CFLAGS"
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.22\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.22") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gthread-2.0 glib-2.0 >= 2.22\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "gthread-2.0 glib-2.0 >= 2.22") 2>&5
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-  pkg_cv_GLIB2_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= 2.22" 2>/dev/null`
++  pkg_cv_GLIB2_CFLAGS=`$PKG_CONFIG --cflags "gthread-2.0 glib-2.0 >= 2.22" 2>/dev/null`
+ else
+   pkg_failed=yes
+ fi
+@@ -19511,12 +19511,12 @@ if test -n "$GLIB2_LIBS"; then
+     pkg_cv_GLIB2_LIBS="$GLIB2_LIBS"
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.22\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.22") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gthread-2.0 glib-2.0 >= 2.22\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "gthread-2.0 glib-2.0 >= 2.22") 2>&5
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-  pkg_cv_GLIB2_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= 2.22" 2>/dev/null`
++  pkg_cv_GLIB2_LIBS=`$PKG_CONFIG --libs "gthread-2.0 glib-2.0 >= 2.22" 2>/dev/null`
+ else
+   pkg_failed=yes
+ fi
+@@ -19536,14 +19536,14 @@ else
+         _pkg_short_errors_supported=no
+ fi
+         if test $_pkg_short_errors_supported = yes; then
+-	        GLIB2_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "glib-2.0 >= 2.22" 2>&1`
++	        GLIB2_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "gthread-2.0 glib-2.0 >= 2.22" 2>&1`
+         else
+-	        GLIB2_PKG_ERRORS=`$PKG_CONFIG --print-errors "glib-2.0 >= 2.22" 2>&1`
++	        GLIB2_PKG_ERRORS=`$PKG_CONFIG --print-errors "gthread-2.0 glib-2.0 >= 2.22" 2>&1`
+         fi
+ 	# Put the nasty error message in config.log where it belongs
+ 	echo "$GLIB2_PKG_ERRORS" >&5
+ 
+-	as_fn_error $? "Package requirements (glib-2.0 >= 2.22) were not met:
++	as_fn_error $? "Package requirements (gthread-2.0 glib-2.0 >= 2.22) were not met:
+ 
+ $GLIB2_PKG_ERRORS
+ 
